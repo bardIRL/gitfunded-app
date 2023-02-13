@@ -32,9 +32,12 @@ class Campaign(models.Model):
     goal = models.IntegerField()
     goal_date = models.DateField()
     about = models.TextField(max_length=1000)
-    links = models.TextField(max_length=250)
+    link = models.CharField(
+        max_length=250,
+        blank=True
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    
 class Donation(models.Model):
     amount = models.IntegerField()
     message = models.TextField(max_length=300)
