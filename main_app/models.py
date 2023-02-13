@@ -11,3 +11,9 @@ class Campaign(models.Model):
     about = models.TextField(max_length=1000)
     links = models.TextField(max_length=250)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Donation(models.Model):
+    amount = models.IntegerField()
+    message = models.TextField(max_length=300)
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
