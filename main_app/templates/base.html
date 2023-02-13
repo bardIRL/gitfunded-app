@@ -10,26 +10,24 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header class="navbar-fixed">
+    <header>
         <nav>
-            <div class="nav-wrapper">
                 <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;GitFunded</a></li>
+                    <li><a href="{% url 'home' %}">&nbsp;&nbsp;GitFunded</a></li>
                 </ul>
-                <ul class="right">
+                <ul>
                     <li><a href="{% url 'about' %}">About</a></li>
                       <li><a href="{% url 'campaigns_create' %}">Create Campaign</a></li>
                       <li><a href="{% url 'index' %}">Campaigns</a></li>
-                  </ul>
-            </div>
+                </ul>
         </nav>
     </header>
-    <main class="container">
+    <main>
         {% block content %}
         {% endblock %}
     </main>
-  	<footer class="page-footer">
-       <div class="right">All Rights Reserved, &copy; 2023 GitGud &nbsp;</div>
+  	<footer
+       <p>All Rights Reserved, &copy; 2023 GitGud &nbsp;</p>
     </footer>
 </body>
 </html>
