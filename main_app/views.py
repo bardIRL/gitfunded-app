@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .models import Campaign
 
 # Create your views here.
@@ -31,3 +31,8 @@ class CampaignCreate(CreateView):
 class CampaignDelete(DeleteView):
   model = Campaign
   success_url = '/campaigns'
+
+class CampaignUpdate(UpdateView):
+  model = Campaign
+  fields = ['title', 'category', 'about', 'goal', 'goal_date', 'link']
+  success_url = ''
