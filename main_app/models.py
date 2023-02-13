@@ -31,7 +31,7 @@ class Campaign(models.Model):
     )
     goal = models.IntegerField()
     goal_date = models.DateField()
-    about = models.TextField(max_length=1000)
+    about = models.TextField(max_length=3000)
     link = models.CharField(
         max_length=250,
         blank=True

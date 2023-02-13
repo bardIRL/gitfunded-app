@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.views.generic.edit import DeleteView
 from .models import Campaign
 
 # Create your views here.
