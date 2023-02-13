@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, DeleteView
 from .models import Campaign
 
 # Create your views here.
@@ -19,6 +20,13 @@ def campaigns_detail(request, campaign_id):
   return render(request, 'campaigns/detail.html', {
     'campaign': campaign
   })
+
+class CampaignCreate(CreateView):
+  model = Campaign
+  fields = ['title', 'category', 'about', 'goal', 'goal_date', 'link']
+  def form_valid(self, form):
+    form.instance.user = self.request.user 
+    return super().form_valid(form)
 
 class CampaignDelete(DeleteView):
   model = Campaign
