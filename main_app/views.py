@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import DeleteView
 from .models import Campaign
 
 # Create your views here.
@@ -19,3 +20,7 @@ def campaigns_detail(request, campaign_id):
   return render(request, 'campaigns/detail.html', {
     'campaign': campaign
   })
+
+class CampaignDelete(DeleteView):
+  model = Campaign
+  success_url = '/campaigns'
