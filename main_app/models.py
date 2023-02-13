@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -37,6 +38,9 @@ class Campaign(models.Model):
         blank=True
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'campaign_id': self.id})
     
 class Donation(models.Model):
     amount = models.IntegerField()
