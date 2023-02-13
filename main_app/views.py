@@ -13,3 +13,9 @@ def campaigns_index(request):
   return render(request, 'campaigns/index.html', {
     'campaigns': campaigns
   })
+
+def campaigns_details(request, campaign_id):
+  campaign = Campaign.objects.get(id=campaign_id)
+  return render(request, 'campaigns/detail.html', {
+    'campaign': campaign
+  })

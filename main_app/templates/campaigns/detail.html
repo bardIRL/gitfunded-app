@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ campaign.title }}</h1>
+<p>{{ campaign.category }}</p>
+<p>{{ campaign.user }} is organizing this fundraiser. </p>
+<br>
+<p>{{ campaign.about }}</p>
+<p>raised out of / $ {{ campaign.goal }}</p>
+<p>Goal Date: {{ campaign.goal_date }}</p>
+<p>Additional Links: {{ campaign.links }}</p>
+
+{% endblock %}

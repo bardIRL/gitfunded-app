@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>All Campaigns</h1>
+
+{% for campaign in campaigns %}
+    <a href="{% url 'detail' campaign.id %}">
+        <h3>{{ campaign.title }}</h3>
+        <p>Category: {{ campaign.category }}</p>
+        <p>About: {{ campaign.about }}</p>
+    </a>
+{% endfor %}
+
+{% endblock %}
