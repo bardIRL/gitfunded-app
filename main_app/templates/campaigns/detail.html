@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ campaign.title }}</h1>
+<p>Category: {{ campaign.category }}</p>
+<p>{{ campaign.user }} is organizing this fundraiser. </p>
+<br>
+<p>{{ campaign.about }}</p>
+<p>raised out of / $ {{ campaign.goal }}</p>
+<p>Goal Date: {{ campaign.goal_date }}</p>
+{% if campaign.link %}
+    <p><a href="{{ campaign.link }}">Click here for more information.</a></p>
+{% else %}
+    <p>No links have been added yet!</p>
+{% endif %}
+
+{% endblock %}
