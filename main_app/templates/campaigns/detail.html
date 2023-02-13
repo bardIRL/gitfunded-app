@@ -2,6 +2,10 @@
 {% block content %}
 
 <h1>{{ campaign.title }}</h1>
+
+<a href="{% url 'campaigns_update' word.id %}">Edit</a>
+<a href="{% url 'campaigns_delete' word.id %}">Delete</a>
+
 <p>Category: {{ campaign.category }}</p>
 <p>{{ campaign.user }} is organizing this fundraiser. </p>
 <br>
@@ -13,5 +17,6 @@
 {% else %}
     <p>No links have been added yet!</p>
 {% endif %}
+
 
 {% endblock %}
