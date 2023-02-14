@@ -1,17 +1,21 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1>All Campaigns</h1>
 <div class="container">
-{% for campaign in campaigns %}
-    <div class="card">
-        <a class="card-links" href="{% url 'detail' campaign.id %}">
-            <h2>{{ campaign.title }}</h2>
-            <p class="category">{{ campaign.category }}</p>
-            <p>{{ campaign.about | truncatechars:100}}</p>
-        </a>
-    </div>
-{% endfor %}
+  {% for campaign in campaigns %}
+  <div class="card">
+    <a class="card-links" href="{% url 'detail' campaign.id %}">
+      {% for photo in campaign.photo_set.all %}
+      <img id="card-img" src="{{ photo.url }}" />
+      {% endfor %}
+      <div class="card-content">
+        <h2 id="card-title">{{ campaign.title }}</h2>
+        <p class="category">{{ campaign.category }}</p>
+        <p>{{ campaign.about | truncatechars:100}}</p>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}
