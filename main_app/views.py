@@ -3,7 +3,8 @@ import boto3
 import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .models import Campaign, Photo
+from django.db.models import Sum
+from .models import Campaign, Donation, Photo
 from .forms import DonationForm
 
 # Create your views here.
@@ -21,9 +22,16 @@ def campaigns_index(request):
 
 def campaigns_detail(request, campaign_id):
   campaign = Campaign.objects.get(id=campaign_id)
+  donations = Donation.objects.filter(campaign=campaign)
+  total_donations = donations.aggregate(Sum('amount'))['amount__sum'] or 0
+  if total_donations is not None:
+      goal_percentage = int(total_donations / campaign.goal * 100)
+  else:
+      goal_percentage = 0
+  print(goal_percentage)
   donation_form = DonationForm()
   return render(request, 'campaigns/detail.html', {
-    'campaign': campaign, 'donation_form': donation_form
+    'campaign': campaign, 'donations': donations, 'total_donations': total_donations,'goal_percentage': goal_percentage, 'donation_form': donation_form
   })
 
 class CampaignCreate(CreateView):
