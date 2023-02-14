@@ -11,4 +11,5 @@ urlpatterns = [
   path('campaigns/<int:pk>/update/', views.CampaignUpdate.as_view(), name='campaigns_update'),
   path('campaigns/<int:campaign_id>/add_donation/', views.add_donation, name='add_donation'),
   path('campaigns/<int:campaign_id>/add_photo', views.add_photo, name='add_photo'),
+  path('accounts/signup/', views.signup, name='signup'),
 ]
