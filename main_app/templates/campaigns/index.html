@@ -2,13 +2,16 @@
 {% block content %}
 
 <h1>All Campaigns</h1>
-
+<div class="container">
 {% for campaign in campaigns %}
-    <a href="{% url 'detail' campaign.id %}">
-        <h3>{{ campaign.title }}</h3>
-        <p>Category: {{ campaign.category }}</p>
-        <p>About: {{ campaign.about }}</p>
-    </a>
+    <div class="card">
+        <a class="card-links" href="{% url 'detail' campaign.id %}">
+            <h2>{{ campaign.title }}</h2>
+            <p class="category">{{ campaign.category }}</p>
+            <p>{{ campaign.about | truncatechars:100}}</p>
+        </a>
+    </div>
 {% endfor %}
+</div>
 
 {% endblock %}
