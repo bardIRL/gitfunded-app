@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Make a Donation</h1
+
+<form action="{% url 'detail' campaign.id %}" method="POST">
+  {% csrf_token %} {{ donation_form.as_p }}
+  <input type="submit" value="Donate" />
+</form>
+
+{% endblock %}

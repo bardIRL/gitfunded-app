@@ -1,4 +1,0 @@
-<form action="{% url 'add_donation' campaign.id %}" method="POST">
-  {% csrf_token %} {{ donation_form.as_p }}
-  <input type="submit" value="Donate" />
-</form>
