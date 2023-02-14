@@ -47,3 +47,10 @@ class Donation(models.Model):
     message = models.TextField(max_length=300)
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for campaign_id: {self.campaign_id} @{self.url}"

@@ -1,7 +1,4 @@
-{% extends 'base.html' %} 
-{% block content %} 
-
-{% if object %}
+{% extends 'base.html' %} {% block content %} {% if object %}
 
 <h1>Edit Campaign</h1>
 {% else %}
@@ -13,7 +10,7 @@
   <table>
     {{form.as_table}}
   </table>
-  <input type="submit" value="Submit"/>
+  <input type="submit" value="Submit" />
 </form>
 
 {% endblock %}
