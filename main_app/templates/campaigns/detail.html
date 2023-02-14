@@ -30,7 +30,21 @@
     </div>
     <div>
       <p>Category | <span class="category">{{ campaign.category }}</span></p>
-      <p>raised out of / ${{ campaign.goal }} goal.</p>
+      <p>${{ total_donations }} raised out of ${{ campaign.goal }} goal.</p>
+
+      {{ goal_percentage }}%
+
+      <div class="progress">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          style="width: {{ goal_percentage }}%;"
+          aria-valuenow="{{ goal_percentage }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+
       <p>{{ campaign.about | linebreaks}}</p>
       <p>
         <span class="category">{{ campaign.user }}</span> is organizing this

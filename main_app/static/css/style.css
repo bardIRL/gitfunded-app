@@ -186,3 +186,15 @@ input[type="submit"] {
   flex-direction: row;
   gap: 2em;
 }
+
+.progress {
+  height: 20px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #3bb57a;
+  border-radius: 10px;
+}
