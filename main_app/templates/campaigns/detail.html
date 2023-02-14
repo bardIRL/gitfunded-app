@@ -11,6 +11,17 @@
 <p>No Photos Uploaded</p>
 {% endfor %}
 
+<form
+  action="{% url 'add_photo' campaign.id %}"
+  enctype="multipart/form-data"
+  method="POST"
+>
+  {% csrf_token %}
+  <input type="file" name="photo-file" />
+  <br /><br />
+  <button type="submit">Upload Photo</button>
+</form>
+
 <p>Category: {{ campaign.category }}</p>
 <p>{{ campaign.user }} is organizing this fundraiser.</p>
 <br />
