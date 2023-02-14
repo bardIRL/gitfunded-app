@@ -42,10 +42,10 @@ class Campaign(models.Model):
         return reverse('detail', kwargs={'campaign_id': self.id})
     
 class Donation(models.Model):
+    name = models.CharField(max_length=100)
     amount = models.IntegerField()
     message = models.TextField(max_length=300)
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
