@@ -3,6 +3,10 @@ import boto3
 import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Campaign, Photo
 from .forms import DonationForm
 
@@ -26,22 +30,23 @@ def campaigns_detail(request, campaign_id):
     'campaign': campaign, 'donation_form': donation_form
   })
 
-class CampaignCreate(CreateView):
+class CampaignCreate(LoginRequiredMixin, CreateView):
   model = Campaign
   fields = ['title', 'category', 'goal', 'link', 'about']
   def form_valid(self, form):
     form.instance.user = self.request.user 
     return super().form_valid(form)
 
-class CampaignDelete(DeleteView):
+class CampaignDelete(LoginRequiredMixin, DeleteView):
   model = Campaign
   success_url = '/campaigns'
 
-class CampaignUpdate(UpdateView):
+class CampaignUpdate(LoginRequiredMixin, UpdateView):
   model = Campaign
   fields = ['title', 'category', 'goal', 'link', 'about']
   success_url = ''
 
+@login_required
 def add_donation(request, campaign_id):
   form = DonationForm(request.POST)
   if form.is_valid():
@@ -50,6 +55,7 @@ def add_donation(request, campaign_id):
     new_donation.save()
   return redirect('detail', campaign_id=campaign_id)
 
+@login_required
 def add_photo(request, campaign_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
@@ -69,3 +75,17 @@ def add_photo(request, campaign_id):
             print('An error occurred uploading file to S3')
             print(e)
     return redirect('detail', campaign_id=campaign_id)
+
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('index')
+    else:
+      error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)
