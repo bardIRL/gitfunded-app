@@ -3,16 +3,12 @@ import boto3
 import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-<<<<<<< HEAD
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Campaign, Photo
-=======
 from django.db.models import Sum
 from .models import Campaign, Donation, Photo
->>>>>>> main
 from .forms import DonationForm
 
 # Create your views here.
