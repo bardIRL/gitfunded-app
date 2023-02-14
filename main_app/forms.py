@@ -4,4 +4,4 @@ from .models import Donation
 class DonationForm(ModelForm):
   class Meta:
     model = Donation
-    fields = ['amount', 'message']
+    fields = ['name', 'amount', 'message']
