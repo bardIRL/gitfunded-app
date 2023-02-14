@@ -52,4 +52,13 @@
   <input type="submit" value="Donate" />
 </form>
 
+<table>
+  {% for donation in campaign.donation_set.all %}
+  <tr>
+    <th>{{ donation.name }} - ${{ donation.amount }}</th>
+    <td>{{ donation.message }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
 {% endblock %}
