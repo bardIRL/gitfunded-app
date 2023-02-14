@@ -45,6 +45,11 @@
   </div>
 </div>
 
-<a href="{% url 'add_donation' %}">Make a Donation</a>
+<h1>Make a Donation</h1
+
+<form action="{% url 'add_donation' campaign.id %}" method="POST">
+  {% csrf_token %} {{ donation_form.as_p }}
+  <input type="submit" value="Donate" />
+</form>
 
 {% endblock %}

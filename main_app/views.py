@@ -4,6 +4,7 @@ import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .models import Campaign, Photo
+from .forms import DonationForm
 
 # Create your views here.
 def home(request):
@@ -20,8 +21,9 @@ def campaigns_index(request):
 
 def campaigns_detail(request, campaign_id):
   campaign = Campaign.objects.get(id=campaign_id)
+  donation_form = DonationForm()
   return render(request, 'campaigns/detail.html', {
-    'campaign': campaign
+    'campaign': campaign, 'donation_form': donation_form
   })
 
 class CampaignCreate(CreateView):
@@ -39,6 +41,14 @@ class CampaignUpdate(UpdateView):
   model = Campaign
   fields = ['title', 'category', 'goal', 'link', 'about']
   success_url = ''
+
+def add_donation(request, campaign_id):
+  form = DonationForm(request.POST)
+  if form.is_valid():
+    new_donation = form.save(commit=False)
+    new_donation.campaign_id = campaign_id
+    new_donation.save()
+  return redirect('detail', campaign_id=campaign_id)
 
 def add_photo(request, campaign_id):
     # photo-file will be the "name" attribute on the <input type="file">
