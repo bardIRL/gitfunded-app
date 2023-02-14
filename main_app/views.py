@@ -26,7 +26,7 @@ def campaigns_detail(request, campaign_id):
 
 class CampaignCreate(CreateView):
   model = Campaign
-  fields = ['title', 'category', 'about', 'goal', 'goal_date', 'link']
+  fields = ['title', 'category', 'goal', 'link', 'about']
   def form_valid(self, form):
     form.instance.user = self.request.user 
     return super().form_valid(form)
@@ -37,7 +37,7 @@ class CampaignDelete(DeleteView):
 
 class CampaignUpdate(UpdateView):
   model = Campaign
-  fields = ['title', 'category', 'about', 'goal', 'goal_date', 'link']
+  fields = ['title', 'category', 'goal', 'link', 'about']
   success_url = ''
 
 def add_photo(request, campaign_id):

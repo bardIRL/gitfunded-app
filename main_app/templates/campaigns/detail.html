@@ -17,22 +17,31 @@
   </form>
 </ul>
 
-{% for photo in campaign.photo_set.all %}
-<div class="banner">
-  <img src="{{ photo.url }}" />
+<div class="details-container">
+  {% for photo in campaign.photo_set.all %}
+  <div class="row">
+    <div>
+      <div class="banner">
+        <img src="{{ photo.url }}" />
+      </div>
+      {% empty %}
+      <p>No Photos Uploaded</p>
+      {% endfor %}
+    </div>
+    <div>
+      <p>Category | <span class="category">{{ campaign.category }}</span></p>
+      <p>raised out of / ${{ campaign.goal }} goal.</p>
+      <p>{{ campaign.about | linebreaks}}</p>
+      <p>
+        <span class="category">{{ campaign.user }}</span> is organizing this
+        fundraiser.
+      </p>
+      {% if campaign.link %}
+      <p><a href="{{ campaign.link }}">Click here for more information.</a></p>
+      {% else %}
+      <p>No link has been added yet!</p>
+      {% endif %}
+    </div>
+  </div>
 </div>
-{% empty %}
-<p>No Photos Uploaded</p>
-{% endfor %}
-
-<p>Category: {{ campaign.category }}</p>
-<p>{{ campaign.user }} is organizing this fundraiser.</p>
-<br />
-<p>{{ campaign.about | linebreaks}}</p>
-<p>raised out of / ${{ campaign.goal }}</p>
-<p>Goal Date: {{ campaign.goal_date }}</p>
-{% if campaign.link %}
-<p><a href="{{ campaign.link }}">Click here for more information.</a></p>
-{% else %}
-<p>No links have been added yet!</p>
-{% endif %} {% endblock %}
+{% endblock %}
