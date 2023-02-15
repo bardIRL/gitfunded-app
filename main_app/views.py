@@ -45,7 +45,12 @@ def campaigns_detail(request, campaign_id):
       goal_percentage = 0
   donation_form = DonationForm()
   return render(request, 'campaigns/detail.html', {
-    'campaign': campaign, 'donations': donations, 'total_donations': total_donations,'goal_percentage': goal_percentage, 'number_of_donations': number_of_donations, 'donation_form': donation_form
+    'campaign': campaign, 
+    'donations': donations, 
+    'total_donations': total_donations,
+    'goal_percentage': goal_percentage, 
+    'number_of_donations': number_of_donations, 
+    'donation_form': donation_form
   })
 
 class CampaignCreate(LoginRequiredMixin, CreateView):
@@ -76,11 +81,14 @@ def add_donation(request, campaign_id):
 @login_required
 def add_photo(request, campaign_id):
     campaign = Campaign.objects.get(id=campaign_id)
+    photo_file = request.FILES.get('photo-file', None)
+    if request.user != campaign.user:
+        messages.error(request, f"You are not authorized to add photos to this campaign.")
+        return redirect('detail', campaign_id=campaign_id)
     max_photos = 1 
     if campaign.photo_set.count() >= max_photos:
         messages.error(request, f"You can only upload up to {max_photos} photos for this campaign.")
         return redirect('detail', campaign_id=campaign_id)
-    photo_file = request.FILES.get('photo-file', None)
     if photo_file:
         s3 = boto3.client('s3')
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
