@@ -2,7 +2,7 @@
 
 <h1>{{ campaign.title }}</h1>
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated and campaign.user == user %}
 <ul class="nav-links details-nav">
   <a href="{% url 'campaigns_update' campaign.id %}">Edit</a>
   <a href="{% url 'campaigns_delete' campaign.id %}">Delete</a>
