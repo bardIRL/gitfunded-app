@@ -28,6 +28,7 @@ def campaigns_index(request):
 def campaigns_detail(request, campaign_id):
   campaign = Campaign.objects.get(id=campaign_id)
   donations = Donation.objects.filter(campaign=campaign)
+  number_of_donations = donations.count()
   total_donations = donations.aggregate(Sum('amount'))['amount__sum'] or 0
   if total_donations is not None:
       goal_percentage = int(total_donations / campaign.goal * 100)
@@ -36,7 +37,7 @@ def campaigns_detail(request, campaign_id):
   print(goal_percentage)
   donation_form = DonationForm()
   return render(request, 'campaigns/detail.html', {
-    'campaign': campaign, 'donations': donations, 'total_donations': total_donations,'goal_percentage': goal_percentage, 'donation_form': donation_form
+    'campaign': campaign, 'donations': donations, 'total_donations': total_donations,'goal_percentage': goal_percentage, 'number_of_donations': number_of_donations, 'donation_form': donation_form
   })
 
 class CampaignCreate(LoginRequiredMixin, CreateView):

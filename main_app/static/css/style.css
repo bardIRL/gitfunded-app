@@ -11,18 +11,25 @@ body {
   line-height: 1.7;
 }
 
+textarea {
+  resize: none;
+}
+
 a {
   color: #3bb57a;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 a:hover {
   color: #059951;
 }
 
-h1 {
+h1,
+h2 {
   margin: 0;
+  font-weight: 500;
+  text-align: center;
 }
 
 nav {
@@ -45,7 +52,7 @@ ul {
 
 main,
 footer {
-  margin: 1em;
+  margin: 0 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,6 +65,7 @@ main {
 footer {
   font-size: 12px;
 }
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -112,16 +120,16 @@ footer {
 }
 
 .banner {
-  width: 800px;
-  height: 400px;
+  width: 50em;
+  height: 30em;
   overflow: none;
 }
 
 .banner > img {
   object-fit: cover;
   object-position: center;
-  width: 800px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
 }
 
 .hidden {
@@ -152,39 +160,44 @@ input[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   gap: 2px;
-}
-
-th {
-  text-align: right;
-}
-
-td {
-  display: flex;
-  justify-content: center;
+  width: 40em;
 }
 
 select,
 textarea,
 input {
-  width: 30em;
+  width: 100%;
   padding: 8px;
-  margin: 5px 30px;
   border-radius: 5px;
   border: 1px solid gray;
+  display: block;
+  font: 14px "Open Sans", Helvetica, Arial, sans-serif;
+  line-height: 2;
 }
 
-input[type="submit"] {
-  width: 10em;
+textarea {
+  height: 150px;
+}
+
+label {
+  font-size: 13px;
 }
 
 .details-container {
   margin: 0 5em;
 }
 
+.details-nav > a,
+.details-nav > label,
+#submit-photo {
+  font-size: 13px;
+  font-weight: 500;
+}
+
 .row {
   display: flex;
   flex-direction: row;
-  gap: 2em;
+  gap: 5em;
 }
 
 .progress {
@@ -207,4 +220,52 @@ input[type="submit"] {
 .messages .success {
   color: green;
   font-weight: bold;
+}
+
+.goal {
+  color: gray;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#total-donations {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* .donations {
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px;
+  padding: 2em;
+} */
+
+.details-nav {
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+p {
+  margin: 5px;
+}
+
+hr {
+  margin: 3em;
+}
+
+.donation-list {
+  display: block;
+}
+
+.quote {
+  font-size: 13px;
+  color: gray;
+  font-style: italic;
 }
