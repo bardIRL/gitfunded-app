@@ -6,12 +6,21 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.db.models import Sum
 from .models import Campaign, Donation, Photo
 from .forms import DonationForm
 
+# Custom mixins.
+class UserIsOwnerMixin(UserPassesTestMixin):
+    def test_func(self):
+        campaign = self.get_object()
+        return campaign.user == self.request.user
+    def handle_no_permission(self):
+        campaign_id = self.kwargs['pk']
+        return redirect('detail', campaign_id=campaign_id)
+    
 # Create your views here.
 def home(request):
   return render(request, 'home.html')
@@ -47,11 +56,11 @@ class CampaignCreate(LoginRequiredMixin, CreateView):
     form.instance.user = self.request.user 
     return super().form_valid(form)
 
-class CampaignDelete(LoginRequiredMixin, DeleteView):
+class CampaignDelete(LoginRequiredMixin, UserIsOwnerMixin, DeleteView):
   model = Campaign
   success_url = '/campaigns'
 
-class CampaignUpdate(LoginRequiredMixin, UpdateView):
+class CampaignUpdate(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
   model = Campaign
   fields = ['title', 'category', 'goal', 'link', 'about']
   success_url = ''
@@ -72,20 +81,14 @@ def add_photo(request, campaign_id):
     if campaign.photo_set.count() >= max_photos:
         messages.error(request, f"You can only upload up to {max_photos} photos for this campaign.")
         return redirect('detail', campaign_id=campaign_id)
-
-    # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
         s3 = boto3.client('s3')
-        # need a unique "key" for S3 / needs image file extension too
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-        # just in case something goes wrong
         try:
             bucket = os.environ['S3_BUCKET']
             s3.upload_fileobj(photo_file, bucket, key)
-            # build the full url string
             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
-            # we can assign to cat_id or cat (if you have a cat object)
             Photo.objects.create(url=url, campaign_id=campaign_id)
             messages.success(request, f"Successfully uploaded!")
         except Exception as e:
@@ -106,3 +109,5 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+
