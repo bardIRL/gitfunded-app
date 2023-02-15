@@ -34,6 +34,12 @@ def campaigns_index(request):
     'campaigns': campaigns
   })
 
+def user_campaigns_index(request, user_id):
+   campaigns = Campaign.objects.filter(user_id=user_id)
+   return render(request, 'campaigns/user_campaigns.html', {
+      'campaigns': campaigns
+  })
+
 def campaigns_detail(request, campaign_id):
   campaign = Campaign.objects.get(id=campaign_id)
   donations = Donation.objects.filter(campaign=campaign)
