@@ -4,24 +4,22 @@
 
 {% if user.is_authenticated and campaign.user == user %}
 <ul class="nav-links details-nav">
-  <a href="{% url 'campaigns_update' campaign.id %}">Edit Campaign</a>
-  <a href="{% url 'campaigns_delete' campaign.id %}">Delete Campaign</a>
-</ul>
-<ul>
+  <a href="{% url 'campaigns_update' campaign.id %}">Edit</a>
+  <a href="{% url 'campaigns_delete' campaign.id %}">Delete</a>
+  <a><label for="img-upload" id="select-photo">Select Photo</label></a>
   <form
     action="{% url 'add_photo' campaign.id %}"
     enctype="multipart/form-data"
     method="POST"
-    id="img-upload"
   >
     {% csrf_token %}
-    <input type="file" name="photo-file" />
+    <input type="file" name="photo-file" id="img-upload" class="hidden" />
+    <button type="submit" id="submit-photo">Upload Photo</button>
   </form>
-  <button type="submit" form="img-upload" id="submit-photo">
-    Upload Photo
-  </button>
 </ul>
-{% endif %} {% if messages %}
+{% endif %}
+
+{% if messages %}
 <ul class="messages">
   {% for message in messages %}
   <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
@@ -53,6 +51,18 @@
           <span class="category">{{ number_of_donations }}</span> donations have
           been made.
         </p>
+        {% if goal_percentage == 100 %}
+        <div class="progress">
+          <div
+            class="progress-bar-bonus"
+            role="progressbar"
+            style="width: {{ goal_percentage }}%;"
+            aria-valuenow="{{ goal_percentage }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+        {% else %}
         <div class="progress">
           <div
             class="progress-bar"
@@ -63,6 +73,7 @@
             aria-valuemax="100"
           ></div>
         </div>
+        {% endif %}
       </div>
       <p class="about-section">{{ campaign.about | linebreaks}}</p>
       <p>
@@ -95,7 +106,7 @@
     <h2>Donations</h2>
     <table>
       <ul class="donation-list">
-        {% for donation in donations %}
+        {% for donation in campaign.donation_set.all %}
         <li>
           <span class="category">${{ donation.amount }}</span>
           from {{ donation.name }}
