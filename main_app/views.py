@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.db.models import Sum
-from .models import Campaign, Donation, Photo
+from .models import Campaign, Donation, Photo, CATEGORIES
 from .forms import DonationForm
 
 # Custom mixins.
@@ -30,8 +30,17 @@ def about(request):
 
 def campaigns_index(request):
   campaigns = Campaign.objects.all()
+  categories = CATEGORIES
+  category = request.GET.get('category')
+  if category:
+    campaigns = Campaign.objects.filter(category=category)
+  else:
+    campaigns = Campaign.objects.all()
+
   return render(request, 'campaigns/index.html', {
-    'campaigns': campaigns
+    'campaigns': campaigns,
+    'categories': categories,
+    'selected_category': category,
   })
 
 @login_required
@@ -123,5 +132,3 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
-
-
