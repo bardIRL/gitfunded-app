@@ -34,6 +34,7 @@ def campaigns_index(request):
     'campaigns': campaigns
   })
 
+@login_required
 def user_campaigns_index(request, user_id):
    campaigns = Campaign.objects.filter(user_id=user_id)
    return render(request, 'campaigns/user_campaigns.html', {
