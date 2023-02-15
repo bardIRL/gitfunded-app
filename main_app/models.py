@@ -53,3 +53,5 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for campaign_id: {self.campaign_id} @{self.url}"
+
+        

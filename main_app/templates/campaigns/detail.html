@@ -2,6 +2,7 @@
 
 <h1>{{ campaign.title }}</h1>
 
+{% if user.is_authenticated %}
 <ul class="nav-links details-nav">
   <a href="{% url 'campaigns_update' campaign.id %}">Edit</a>
   <a href="{% url 'campaigns_delete' campaign.id %}">Delete</a>
@@ -16,6 +17,7 @@
     <button type="submit" id="submit-photo">Upload Photo</button>
   </form>
 </ul>
+{% endif %}
 
 {% if messages %}
 <ul class="messages">
