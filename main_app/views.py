@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 from django.db.models import Sum
 from .models import Campaign, Donation, Photo
 from .forms import DonationForm
@@ -65,6 +66,12 @@ def add_donation(request, campaign_id):
 
 @login_required
 def add_photo(request, campaign_id):
+    campaign = Campaign.objects.get(id=campaign_id)
+    max_photos = 1 
+    if campaign.photo_set.count() >= max_photos:
+        messages.error(request, f"You can only upload up to {max_photos} photos for this campaign.")
+        return redirect('detail', campaign_id=campaign_id)
+
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -79,6 +86,7 @@ def add_photo(request, campaign_id):
             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
             # we can assign to cat_id or cat (if you have a cat object)
             Photo.objects.create(url=url, campaign_id=campaign_id)
+            messages.success(request, f"Successfully uploaded!")
         except Exception as e:
             print('An error occurred uploading file to S3')
             print(e)

@@ -198,3 +198,13 @@ input[type="submit"] {
   background-color: #3bb57a;
   border-radius: 10px;
 }
+
+.messages .error {
+  color: red;
+  font-weight: bold;
+}
+
+.messages .success {
+  color: green;
+  font-weight: bold;
+}
