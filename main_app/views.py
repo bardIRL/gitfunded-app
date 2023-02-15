@@ -40,10 +40,9 @@ def campaigns_detail(request, campaign_id):
   number_of_donations = donations.count()
   total_donations = donations.aggregate(Sum('amount'))['amount__sum'] or 0
   if total_donations is not None:
-      goal_percentage = int(total_donations / campaign.goal * 100)
+      goal_percentage = min(int(total_donations / campaign.goal * 100), 100)
   else:
       goal_percentage = 0
-  print(goal_percentage)
   donation_form = DonationForm()
   return render(request, 'campaigns/detail.html', {
     'campaign': campaign, 'donations': donations, 'total_donations': total_donations,'goal_percentage': goal_percentage, 'number_of_donations': number_of_donations, 'donation_form': donation_form
