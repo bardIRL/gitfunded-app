@@ -166,11 +166,14 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  top: 0;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.514);
   cursor: pointer;
+  top: -10px;
 }
 
 .card-links,
