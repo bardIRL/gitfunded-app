@@ -1,36 +1,39 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>{{ campaign.title }}</h1>
-
-{% if user.is_authenticated and campaign.user == user %}
-<ul class="nav-links details-nav">
-  <a href="{% url 'campaigns_update' campaign.id %}">Edit</a>
-  <a href="{% url 'campaigns_delete' campaign.id %}">Delete</a>
-  <a><label for="img-upload" id="select-photo">Select Photo</label></a>
-  <form
-    action="{% url 'add_photo' campaign.id %}"
-    enctype="multipart/form-data"
-    method="POST"
-  >
-    {% csrf_token %}
-    <input type="file" name="photo-file" id="img-upload" class="hidden" />
-    <button type="submit" id="submit-photo">Upload Photo</button>
-  </form>
-</ul>
-{% endif %}
-
-{% if messages %}
-<ul class="messages">
-  {% for message in messages %}
-  <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-    {{ message }}
-  </li>
-  {% endfor %}
-</ul>
-{% endif %}
-
 <div class="details-container">
-  {% for photo in campaign.photo_set.all %}
+  <h1>{{ campaign.title }}</h1>
+  {% if user.is_authenticated and campaign.user == user %}
+  <ul class="details-links">
+    <a href="{% url 'campaigns_update' campaign.id %}">
+      Edit <i class="fa-regular fa-pen-to-square"></i>
+    </a>
+    <a href="{% url 'campaigns_delete' campaign.id %}">
+      Delete <i class="fa-regular fa-trash"></i>
+    </a>
+    <a>
+      <label for="img-upload" id="select-photo">
+        Select Photo <i class="fa-regular fa-camera"></i>
+      </label>
+    </a>
+    <form
+      action="{% url 'add_photo' campaign.id %}"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      {% csrf_token %}
+      <input type="file" name="photo-file" id="img-upload" class="hidden" />
+      <button type="submit" id="submit-photo">Upload Photo</button>
+    </form>
+  </ul>
+  {% endif %} {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+      {{ message }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %} {% for photo in campaign.photo_set.all %}
   <div class="row">
     <div>
       <div class="banner">
@@ -81,41 +84,38 @@
         fundraiser. 💚
       </p>
       {% if campaign.link %}
-
       <a href="{{ campaign.link }}">Click here for more information.</a>
-
       {% endif %}
     </div>
   </div>
   <hr />
-</div>
-
-<div class="row">
-  <div class="donations">
-    <h2>Make a Donation</h2>
-    <form
-      class="donation-form"
-      action="{% url 'add_donation' campaign.id %}"
-      method="POST"
-    >
-      {% csrf_token %} {{ donation_form.as_p }}
-      <input type="submit" value="Donate" />
-    </form>
+  <div class="donations-section row">
+    <div>
+      <h2>Make a Donation</h2>
+      <form
+        class="donation-form"
+        action="{% url 'add_donation' campaign.id %}"
+        method="POST"
+      >
+        {% csrf_token %} {{ donation_form.as_p }}
+        <input type="submit" value="Donate" />
+      </form>
+    </div>
+    <div>
+      <h2>Donations</h2>
+      <table class="donations">
+        <ul class="donation-list">
+          {% for donation in campaign.donation_set.all %}
+          <li>
+            <span class="category">${{ donation.amount }}</span>
+            from {{ donation.name }}
+          </li>
+          <li class="quote">"{{ donation.message }}"</li>
+          <br />
+          {% endfor %}
+        </ul>
+      </table>
+    </div>
   </div>
-  <div>
-    <h2>Donations</h2>
-    <table>
-      <ul class="donation-list">
-        {% for donation in campaign.donation_set.all %}
-        <li>
-          <span class="category">${{ donation.amount }}</span>
-          from {{ donation.name }}
-        </li>
-        <li class="quote">"{{ donation.message }}"</li>
-        <br />
-        {% endfor %}
-      </ul>
-    </table>
-  </div>
+  {% endblock %}
 </div>
-{% endblock %}
