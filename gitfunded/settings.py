@@ -14,6 +14,9 @@ from pathlib import Path
 
 import environ
 import os
+import dotenv
+
+dotenv.load_dotenv()
 
 environ.Env()
 environ.Env.read_env()
@@ -143,3 +146,9 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+
+import django_on_heroku
+django_on_heroku.settings(locals())
