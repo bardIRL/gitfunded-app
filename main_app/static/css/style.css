@@ -527,3 +527,33 @@ input[type="submit"] {
   color: white;
   margin-bottom: 3em;
 }
+
+body > main > form > p:nth-child(2) > span {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(1) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(2) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(3) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(4) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > p:nth-child(6) > span {
+  visibility: hidden;
+  font-size: 0px;
+}
