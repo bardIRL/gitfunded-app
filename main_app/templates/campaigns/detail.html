@@ -105,7 +105,7 @@
       <h2>Donations</h2>
       <table class="donations">
         <ul class="donation-list">
-          {% for donation in campaign.donation_set.all %}
+          {% for donation in donations %}
           <li>
             <span class="category">${{ donation.amount }}</span>
             from {{ donation.name }}

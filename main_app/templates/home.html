@@ -1,5 +1,56 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Home</h1>
+<div class="hero-container">
+  <h1 id="home-title">We make<br />fundraising easy</h1>
+  <div class="">
+    <button class="home-btn">Browse Campaigns</button>
+  </div>
+</div>
+<div class="about-container">
+  <div class="row about">
+    <div class="about-summary">
+      <h2>About GitFunded</h2>
+      <p>
+        GitFunded is an intuitive and easy-to-use crowdfunding app that empowers
+        users to create, personalize, and manage charitable campaigns. With
+        GitFunded, users can explore and support a wide range of charitable
+        causes that align with their values and make a real impact in their
+        communities and beyond. The app makes it simple to donate and monitor
+        progress, while also providing valuable insights and tools to help
+        campaign organizers maximize their fundraising potential. Whether you're
+        a charitable organization or a compassionate individual looking to make
+        a difference, GitFunded is the perfect platform to help bring your cause
+        to life.
+      </p>
+    </div>
+    <div class="stats">
+      <p class="number">{{ number_of_campaigns }}</p>
+      <p>campaigns funded</p>
+      <br />
+      <p class="number">{{ number_of_donations }}</p>
+      <p>donations made</p>
+    </div>
+  </div>
+</div>
+<h2>Recent Campaigns</h2>
+<div class="showcase-container">
+  {% for campaign in recent_campaigns %}
+  <a class="card-links" href="{% url 'detail' campaign.id %}">
+    <div class="card">
+      <div>
+        {% for photo in campaign.photo_set.all %}
+        <img id="card-img" src="{{ photo.url }}" />
+        {% endfor %}
+        <h2 id="card-title">{{ campaign.title }}</h2>
+        <p class="category">{{ campaign.category }}</p>
+      </div>
+      <div>
+        <p class="summary">{{ campaign.about | truncatechars:100}}</p>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+<button class="home-btn see-all-btn">See All Campaigns</button>
 
 {% endblock %}

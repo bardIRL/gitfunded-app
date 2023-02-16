@@ -29,19 +29,30 @@ class UserIsOwnerMixin(UserPassesTestMixin):
     
 # Create your views here.
 def home(request):
-  return render(request, 'home.html')
+  campaigns = Campaign.objects.all()
+  donations = Donation.objects.all()
+  number_of_campaigns = campaigns.count()
+  number_of_donations = donations.count()
+  recent_campaigns = Campaign.objects.order_by('-id')[:8]
+
+  return render(request, 'home.html', {
+    'campaigns': campaigns,
+    'number_of_campaigns': number_of_campaigns,
+    'number_of_donations': number_of_donations,
+    'recent_campaigns': recent_campaigns,
+  })
 
 def about(request):
   return render(request, 'about.html')
 
 def campaigns_index(request):
-  campaigns = Campaign.objects.all()
+  campaigns = Campaign.objects.all().order_by('-id')
   categories = CATEGORIES
   category = request.GET.get('category')
   if category:
-    campaigns = Campaign.objects.filter(category=category)
+    campaigns = Campaign.objects.filter(category=category).order_by('-id')
   else:
-    campaigns = Campaign.objects.all()
+    campaigns = Campaign.objects.all().order_by('-id')
 
   return render(request, 'campaigns/index.html', {
     'campaigns': campaigns,
@@ -51,14 +62,14 @@ def campaigns_index(request):
 
 @login_required
 def user_campaigns_index(request, user_id):
-   campaigns = Campaign.objects.filter(user_id=user_id)
+   campaigns = Campaign.objects.filter(user_id=user_id).order_by('-id')
    return render(request, 'campaigns/user_campaigns.html', {
       'campaigns': campaigns
   })
 
 def campaigns_detail(request, campaign_id):
   campaign = Campaign.objects.get(id=campaign_id)
-  donations = Donation.objects.filter(campaign=campaign)
+  donations = Donation.objects.filter(campaign=campaign).order_by('-id')
   number_of_donations = donations.count()
   total_donations = donations.aggregate(Sum('amount'))['amount__sum'] or 0
   if total_donations is not None:

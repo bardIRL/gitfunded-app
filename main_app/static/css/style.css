@@ -69,7 +69,7 @@ footer {
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-  margin: 1em 10em 3em;
+  margin: 1em 10em;
 }
 
 .nav-links {
@@ -427,4 +427,103 @@ input[type="submit"] {
 /* registration styles */
 .registration {
   width: 20em;
+}
+
+/* landing page styles */
+.hero-container {
+  height: 85vh;
+  width: 100vw;
+  background-image: linear-gradient(
+      to right,
+      rgba(29, 141, 87, 0.856),
+      rgba(163, 190, 133, 0.822)
+    ),
+    url("../images/heart.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-title {
+  font-size: 5em;
+  color: white;
+}
+
+.home-btn,
+.home-btn:hover {
+  background-color: white;
+  color: #059951;
+  border: none;
+  padding: 1em 2em;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.home-btn {
+  position: relative;
+  top: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 78, 13, 0.377);
+}
+
+.home-btn:hover {
+  top: 2px;
+  box-shadow: none;
+}
+
+.about-container {
+  background-color: #3bb57a;
+  height: 20em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3em;
+}
+
+.about-container h2,
+.about-container p {
+  text-align: left;
+  color: white;
+}
+
+.about {
+  justify-content: space-between;
+}
+
+.about-summary {
+  width: 60%;
+  margin-left: 8em;
+}
+
+.stats {
+  margin-right: 8em;
+}
+
+.stats > p {
+  text-align: center;
+  margin: 0;
+}
+
+.number {
+  font-size: 2em;
+}
+
+.showcase-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+  margin: 0 auto;
+  padding: 3em;
+}
+
+.see-all-btn,
+.see-all-btn:hover {
+  background-color: #3bb57a;
+  color: white;
+  margin-bottom: 3em;
 }
