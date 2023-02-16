@@ -16,25 +16,37 @@
   <body>
     <header>
       <nav>
-        <ul>
-          <li><a href="{% url 'home' %}">GitFunded</a></li>
-        </ul>
-        <ul class="nav-links">
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'index' %}">All Campaigns</a></li>
-          {% if user.is_authenticated %}
-          <li>
-            <a href="{% url 'user_campaigns_index' user_id=request.user.id %}"
-              >Your Campaigns</a
-            >
-          </li>
-          <li><a href="{% url 'campaigns_create' %}">Create a Campaign</a></li>
-          <li><a href="{% url 'logout' %}">Log Out</a></li>
-          {% else %}
-          <li><a href="{% url 'signup' %}">Sign Up</a></li>
-          <li><a href="{% url 'login' %}">Log In</a></li>
-          {% endif %}
-        </ul>
+        <div class="navbar">
+          <a href="{% url 'home' %}">GitFunded</a>
+          <a href="{% url 'about' %}">About</a>
+          <div class="dropdown">
+            <button class="dropbtn">Campaigns
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              {% if user.is_authenticated %}
+              <a href="{% url 'index' %}">All Campaigns</a>
+              <a href="{% url 'user_campaigns_index' user_id=request.user.id %}">Your Campaigns</a>
+              <a href="{% url 'campaigns_create' %}">Create a Campaign</a>
+              {% else %}
+              <a href="{% url 'index' %}">All Campaigns</a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">User
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              {% if user.is_authenticated %}
+              <a href="{% url 'logout' %}">Log Out</a> 
+              {% else %}             
+              <a href="{% url 'login' %}">Log In</a>
+              <a href="{% url 'signup' %}">Sign Up</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
     <main>{% block content %} {% endblock %}</main>
