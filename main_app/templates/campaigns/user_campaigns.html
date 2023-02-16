@@ -1,20 +1,23 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Your Campaigns</h1>
-<div class="container">
+
+<div class="index-container">
   {% for campaign in campaigns %}
-  <div class="card">
-    <a class="card-links" href="{% url 'detail' campaign.id %}">
-      {% for photo in campaign.photo_set.all %}
-      <img id="card-img" src="{{ photo.url }}" />
-      {% endfor %}
-      <div class="card-content">
+  <a class="card-links" href="{% url 'detail' campaign.id %}">
+    <div class="card">
+      <div>
+        {% for photo in campaign.photo_set.all %}
+        <img id="card-img" src="{{ photo.url }}" />
+        {% endfor %}
         <h2 id="card-title">{{ campaign.title }}</h2>
         <p class="category">{{ campaign.category }}</p>
-        <p>{{ campaign.about | truncatechars:100}}</p>
       </div>
-    </a>
-  </div>
+      <div>
+        <p class="summary">{{ campaign.about | truncatechars:100}}</p>
+      </div>
+    </div>
+  </a>
   {% endfor %}
 </div>
 
