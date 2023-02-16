@@ -12,11 +12,11 @@ from django.db.models import Sum
 from .models import Campaign, Donation, Photo, CATEGORIES
 from .forms import DonationForm
 
-import stripe
-from django.conf import settings
-from django.http import JsonResponse
-from django.views import View
-from .models import Price
+# import stripe
+# from django.conf import settings
+# from django.http import JsonResponse
+# from django.views import View
+# from .models import Price
 
 # Custom mixins.
 class UserIsOwnerMixin(UserPassesTestMixin):
