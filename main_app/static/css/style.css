@@ -50,7 +50,7 @@ footer {
 }
 
 main {
-  min-height: 100vh;
+  min-height: 85vh;
 }
 
 footer {
@@ -194,6 +194,7 @@ ul {
 .summary,
 .category {
   margin: 5px 0;
+  font-size: 14px;
 }
 
 /* details styles */
@@ -283,6 +284,8 @@ label {
   display: flex;
   flex-direction: row;
   gap: 2em;
+  justify-content: center;
+  align-items: center;
 }
 
 .progress {
@@ -358,12 +361,16 @@ hr {
 
 .donation-list {
   display: block;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   overflow-x: hidden;
   height: 25em;
   width: 35em;
   padding: 1em;
   padding-top: 0;
+}
+
+.donation-form {
+  width: 20em;
 }
 
 .quote {
@@ -392,9 +399,22 @@ hr {
 
 /* create styles */
 
-.create-form {
+form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 2px;
   width: 40em;
+  display: block;
+}
+
+input[type="submit"] {
+  margin: 1em 0;
+  padding: 0.6em;
+}
+
+/* registration styles */
+.registration {
+  width: 20em;
 }
