@@ -15,6 +15,7 @@ This collaborative project is built with Python and Django, and was intended for
   <li>Python</li>
   <li>Django</li>
   <li>DTL (Django Templating Language)</li>
+  <li>Django Authentication</li>
   <li>PostgreSQL / bit.io / SQL</li>
   <li>AWS S3</li>
 </ul>
