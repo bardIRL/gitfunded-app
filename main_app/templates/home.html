@@ -3,10 +3,10 @@
 <div class="hero-container">
   <h1 id="home-title">We make<br />fundraising easy</h1>
   <div class="">
-    <button class="home-btn">Browse Campaigns</button>
+    <a href="#about"><button class="home-btn">Learn More</button></a>
   </div>
 </div>
-<div class="about-container">
+<div id="about" class="about-container">
   <div class="row about">
     <div class="about-summary">
       <h2>About GitFunded</h2>
@@ -22,6 +22,9 @@
         a difference, GitFunded is the perfect platform to help bring your cause
         to life.
       </p>
+      <br /><a id="sign-up" href="{% url 'signup' %}"
+        >Get Started Now <i class="fa-solid fa-arrow-right"></i>
+      </a>
     </div>
     <div class="stats">
       <p class="number">{{ number_of_campaigns }}</p>
@@ -51,6 +54,8 @@
   </a>
   {% endfor %}
 </div>
-<button class="home-btn see-all-btn">See All Campaigns</button>
+<a href="{% url 'index' %}"
+  ><button class="home-btn see-all-btn">See All Campaigns</button></a
+>
 
 {% endblock %}

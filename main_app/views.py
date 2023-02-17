@@ -114,7 +114,7 @@ def add_photo(request, campaign_id):
         return redirect('detail', campaign_id=campaign_id)
     max_photos = 1 
     if campaign.photo_set.count() >= max_photos:
-        messages.error(request, f"You can only upload up to {max_photos} photos for this campaign.")
+        messages.error(request, f"You can only upload {max_photos} photo for this campaign.")
         return redirect('detail', campaign_id=campaign_id)
     if photo_file:
         s3 = boto3.client('s3')

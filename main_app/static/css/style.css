@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -145,7 +149,6 @@ ul {
 }
 
 /* index styles */
-
 .index-container {
   display: flex;
   flex-wrap: wrap;
@@ -208,7 +211,6 @@ ul {
 }
 
 /* details styles */
-
 .banner {
   width: 45em;
   height: 35em;
@@ -264,6 +266,11 @@ input[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  max-width: 50%;
+}
+
+body > main > div.details-container > p {
+  text-align: center;
 }
 
 select,
@@ -363,7 +370,6 @@ hr {
 }
 
 /* donations section styles */
-
 .donations-section {
   width: 100%;
   justify-content: space-evenly;
@@ -390,7 +396,6 @@ hr {
 }
 
 /* scroll bar */
-
 ::-webkit-scrollbar {
   width: 3px;
 }
@@ -400,15 +405,14 @@ hr {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #3bb57a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #059951;
 }
 
 /* create styles */
-
 form {
   display: flex;
   flex-direction: column;
@@ -429,10 +433,40 @@ input[type="submit"] {
   width: 20em;
 }
 
+body > main > form > p:nth-child(2) > span {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(1) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(2) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(3) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(4) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > p:nth-child(6) > span {
+  visibility: hidden;
+  font-size: 0px;
+}
+
 /* landing page styles */
 .hero-container {
-  height: 85vh;
-  width: 100vw;
+  height: 90vh;
+  width: -webkit-fill-available;
   background-image: linear-gradient(
       to right,
       rgba(29, 141, 87, 0.856),
@@ -480,12 +514,14 @@ input[type="submit"] {
   display: flex;
   align-items: center;
   margin-bottom: 3em;
+  padding: 0em 8em;
 }
 
 .about-container h2,
 .about-container p {
   text-align: left;
   color: white;
+  margin: 0;
 }
 
 .about {
@@ -507,7 +543,8 @@ input[type="submit"] {
 }
 
 .number {
-  font-size: 2em;
+  font-size: 2.5em;
+  font-weight: 600;
 }
 
 .showcase-container {
@@ -528,32 +565,18 @@ input[type="submit"] {
   margin-bottom: 3em;
 }
 
-body > main > form > p:nth-child(2) > span {
-  visibility: hidden;
-  font-size: 0px;
+#sign-up {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-bottom: 2px solid white;
+  padding: 12px;
+  transition: 300ms ease-in-out;
 }
 
-body > main > form > ul > li:nth-child(1) {
-  visibility: hidden;
-  font-size: 0px;
-}
-
-body > main > form > ul > li:nth-child(2) {
-  visibility: hidden;
-  font-size: 0px;
-}
-
-body > main > form > ul > li:nth-child(3) {
-  visibility: hidden;
-  font-size: 0px;
-}
-
-body > main > form > ul > li:nth-child(4) {
-  visibility: hidden;
-  font-size: 0px;
-}
-
-body > main > form > p:nth-child(6) > span {
-  visibility: hidden;
-  font-size: 0px;
+#sign-up:hover {
+  color: #3bb57a;
+  background-color: white;
+  border-radius: 8px;
 }
