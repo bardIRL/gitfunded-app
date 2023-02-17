@@ -35,7 +35,6 @@ screen==1.0.1
 six==1.16.0
 sqlparse==0.4.3
 stack-data==0.6.2
-stripe==5.1.1
 traitlets==5.6.0
 urllib3==1.26.12
 wcwidth==0.2.5
