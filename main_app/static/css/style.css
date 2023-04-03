@@ -535,7 +535,7 @@ body > main > form > p:nth-child(6) > span {
   width: 60%;
 }
 
-.stats > p {
+.stats > .el > p {
   text-align: center;
   margin: 0;
 }
@@ -626,9 +626,17 @@ body > main > form > p:nth-child(6) > span {
     width: 100%;
   }
 
-  .about,
-  .filter {
+  .filter, .stats  {
+    display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .stats {
+    gap: 3em;
+  }
+  .about {
+    flex-direction: column-reverse;
   }
 
   .banner {
