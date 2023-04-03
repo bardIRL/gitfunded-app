@@ -241,9 +241,13 @@ ul {
 .details-links {
   font-size: 14px;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   width: 100%;
   gap: 3em;
+}
+
+.details-links > form {
+  width: 125px;
 }
 
 button,
@@ -266,7 +270,7 @@ input[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  max-width: 50%;
+  width: 90%;
 }
 
 body > main > div.details-container > p {
@@ -509,12 +513,10 @@ body > main > form > p:nth-child(6) > span {
 
 .about-container {
   background-color: #3bb57a;
-  height: 20em;
   width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 3em;
-  padding: 0em 8em;
 }
 
 .about-container h2,
@@ -525,16 +527,12 @@ body > main > form > p:nth-child(6) > span {
 }
 
 .about {
-  justify-content: space-between;
+  justify-content: space-evenly;
+  padding: 2em;
 }
 
 .about-summary {
   width: 60%;
-  margin-left: 8em;
-}
-
-.stats {
-  margin-right: 8em;
 }
 
 .stats > p {
@@ -580,3 +578,76 @@ body > main > form > p:nth-child(6) > span {
   background-color: white;
   border-radius: 8px;
 }
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1800px) {
+  .details-container {
+    margin: 3em;
+  }
+
+  .details-links {
+    justify-content: center;
+    margin: 2em;
+  }
+
+  .details-container {
+    margin: 0 2em;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .banner {
+    width: 30em;
+    height: 40em;
+    overflow: none;
+  }
+
+  .banner > img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .card {
+    width: 35em;
+    height: 25em;
+  }
+
+  #card-img {
+    height: 13em;
+  }
+
+  .row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .about,
+  .filter {
+    flex-direction: row;
+  }
+
+  .banner {
+    width: 85vw;
+    height: 20em;
+    overflow: none;
+  }
+  
+  .banner > img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .donation-form,
+  .donation-list {
+    width: 40em;
+  }
+
+}
+

@@ -44,27 +44,27 @@
       {% endfor %}
     </div>
     <div class="main-info">
-      <div>
-        <p>Category | <span class="category">{{ campaign.category }}</span></p>
-        <p id="total-donations">
-          ${{ total_donations }}
-          <span class="goal">raised of ${{ campaign.goal }} goal</span>
-        </p>
-        <p class="goal">
-          <span class="category">{{ number_of_donations }}</span> donations have
-          been made.
-        </p>
-        {% if goal_percentage == 100 %}
-        <div class="progress">
-          <div
-            class="progress-bar-bonus"
-            role="progressbar"
-            style="width: {{ goal_percentage }}%;"
-            aria-valuenow="{{ goal_percentage }}"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
+
+      <p>Category | <span class="category">{{ campaign.category }}</span></p>
+      <p id="total-donations">
+        ${{ total_donations }}
+        <span class="goal">raised of ${{ campaign.goal }} goal</span>
+      </p>
+      <p class="goal">
+        <span class="category">{{ number_of_donations }}</span> donations have
+        been made.
+      </p>
+      {% if goal_percentage == 100 %}
+      <div class="progress">
+        <div
+          class="progress-bar-bonus"
+          role="progressbar"
+          style="width: {{ goal_percentage }}%;"
+          aria-valuenow="{{ goal_percentage }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
         {% else %}
         <div class="progress">
           <div
@@ -77,7 +77,7 @@
           ></div>
         </div>
         {% endif %}
-      </div>
+     
       <p class="about-section">{{ campaign.about | linebreaks}}</p>
       <p>
         <span class="category">{{ campaign.user }}</span> is organizing this
