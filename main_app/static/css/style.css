@@ -579,7 +579,7 @@ body > main > form > p:nth-child(6) > span {
   border-radius: 8px;
 }
 
-/* MEDIA QUERIES */
+/* media queries */
 
 @media screen and (max-width: 1800px) {
   .details-container {
@@ -609,6 +609,10 @@ body > main > form > p:nth-child(6) > span {
     width: 100%;
     height: 100%;
   }
+
+  .index-container {
+    margin: 1em;
+  }
 }
 
 @media screen and (max-width: 930px) {
@@ -635,8 +639,10 @@ body > main > form > p:nth-child(6) > span {
   .stats {
     gap: 3em;
   }
+
   .about {
     flex-direction: column-reverse;
+    padding: 2em 0em;
   }
 
   .banner {
@@ -657,5 +663,90 @@ body > main > form > p:nth-child(6) > span {
     width: 40em;
   }
 
+  .main-info, 
+  .donation-list, 
+  .donation-form, 
+  .details-links {
+    width: 90vw;
+  }
+
+  .navbar {
+    margin: 1em 2em;
+  }
+
+  .nav-links {
+    gap: 1em;
+  }
+
+  .dropdown-content {
+    right: 15px;
+  }
+ 
+  #home-title {
+    font-size: 5em;
+  }
 }
 
+@media screen and (max-width: 450px) {
+  .card {
+    width: 90vw;
+    height: 24em;
+  }
+
+  #card-img {
+    height: 8em;
+  }
+
+  .summary {
+    font-size: 13px;
+  }
+
+  #card-title {
+    font-size: 1.7em;
+    font-weight: 600;
+  }
+
+  #sign-up, p {
+    font-size: 13px;
+  }
+
+  #home-title {
+    font-size: 3em;
+  }
+
+  .showcase-container {
+    gap: 2em;
+    padding: 1em;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+
+  a, #select-photo, 
+  #submit-photo {
+    font-size: 11px;
+  }
+
+  .details-links {
+    gap: 10px;
+  }
+
+  .details-links > form {
+    width: 100px;
+  }
+
+  .create-form > form {
+    width: 90vw;
+  }
+
+  .dropdown .dropbtn, .navbar a {
+    font-size: 14px;
+  }
+
+  .filter {
+    justify-content: center;
+    gap: 1.5em;
+  }
+
+}
