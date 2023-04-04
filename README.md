@@ -32,17 +32,5 @@ This collaborative project is built with Python and Django, and was intended for
 <h4>Wireframes:</h4><br>
 <img width="300px" src="https://user-images.githubusercontent.com/115611931/219534167-7081e03b-7a1c-4797-8247-70c2670c4ff4.png">
 
-<h2>Future Enhancements</h2>
-<ul>
-  <li>Campaign update feed from the organizer</li>
-  <li>Sharing link feature for social media on details page</li>
-  <li>Stripe API integration for donations</li>
-  <li>User profile page with donations index and campaigns index</li>
-  <li>Embedded video on details page</li>
-  <li>Photo gallery on details page</li>
-  <li>Search feature on index page</li>
-  <li>Mobile and tablet responsiveness</li>
-</ul>
-
 <h2>Collaborators</h2>
 <a href="https://github.com/Alyjah-Luna">Alyjah</a>, <a href="https://github.com/marsailifox">Miles</a>, & <a href="https://github.com/bardIRL">Meghan</a>
