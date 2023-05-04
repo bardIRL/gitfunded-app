@@ -1,0 +1,752 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font: 15px "Open Sans", Helvetica, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+/* general styles */
+
+textarea {
+  resize: none;
+}
+
+a {
+  color: #3bb57a;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+a:hover {
+  color: #059951;
+}
+
+p {
+  margin: 5px;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+h1 {
+  margin: 1em;
+}
+
+main,
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  min-height: 85vh;
+}
+
+footer {
+  font-size: 12px;
+}
+
+/* nav styles */
+
+#logo {
+  font-weight: 800;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.navbar {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 10em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10em;
+}
+
+.navbar a {
+  color: #3bb57a;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown > button {
+  padding: 0;
+}
+
+.dropdown .dropbtn {
+  color: #3bb57a;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background-color: white;
+  font-family: inherit;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+  color: #059951;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+i {
+  padding-left: 0.5em;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+/* index styles */
+.index-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  min-height: 100vh;
+  margin: 3em 8em;
+}
+
+.card {
+  width: 22em;
+  height: 25em;
+  padding: 1.5em;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.377);
+  transition: 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  top: 0;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.514);
+  cursor: pointer;
+  top: -10px;
+}
+
+.card-links,
+.card-links:hover {
+  color: black;
+  font-weight: 400;
+}
+
+#card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+#card-title {
+  text-align: left;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.category {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.summary,
+.category {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* details styles */
+.banner {
+  width: 45em;
+  height: 35em;
+  overflow: none;
+}
+
+.banner > img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+#select-photo {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#submit-photo {
+  font-size: 14px;
+  padding: 6px 15px;
+}
+
+.details-links {
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 3em;
+}
+
+.details-links > form {
+  width: 125px;
+}
+
+button,
+input[type="submit"] {
+  font: 16px "Open Sans", Helvetica, Arial, sans-serif;
+  background: rgba(59, 181, 122, 0.774);
+  color: white;
+  border: 2px solid #059951;
+  border-radius: 10px;
+  padding: 6px 50px;
+  cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background: rgba(17, 148, 85, 0.774);
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 90%;
+}
+
+body > main > div.details-container > p {
+  text-align: center;
+}
+
+select,
+textarea,
+input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  display: block;
+  font: 14px "Open Sans", Helvetica, Arial, sans-serif;
+  line-height: 2;
+}
+
+textarea {
+  height: 150px;
+}
+
+label {
+  font-size: 13px;
+}
+
+.details-container {
+  margin: 0 20em;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress {
+  height: 20px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #3bb57a;
+  border-radius: 10px;
+}
+
+.progress-bar-bonus {
+  height: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 154, 0, 1) 10%,
+    rgba(208, 222, 33, 1) 20%,
+    rgba(79, 220, 74, 1) 30%,
+    rgba(63, 218, 216, 1) 40%,
+    rgba(47, 201, 226, 1) 50%,
+    rgba(28, 127, 238, 1) 60%,
+    rgba(95, 21, 242, 1) 70%,
+    rgba(186, 12, 248, 1) 80%,
+    rgba(251, 7, 217, 1) 90%,
+    rgba(255, 0, 0, 1) 100%
+  );
+  background-size: 200% 100%;
+  animation: a 0.5s linear infinite;
+  border-radius: 10px;
+}
+
+@keyframes a {
+  to {
+    background-position: 200% 0;
+  }
+}
+
+.messages .error {
+  color: red;
+  font-weight: bold;
+}
+
+.messages .success {
+  color: green;
+  font-weight: bold;
+}
+
+.goal {
+  color: gray;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#total-donations {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+hr {
+  margin: 3em;
+}
+
+/* donations section styles */
+.donations-section {
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.donation-list {
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 25em;
+  width: 35em;
+  padding: 1em;
+  padding-top: 0;
+}
+
+.donation-form {
+  width: 20em;
+}
+
+.quote {
+  font-size: 13px;
+  color: gray;
+  font-style: italic;
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3bb57a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #059951;
+}
+
+/* create styles */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  width: 40em;
+  display: block;
+}
+
+input[type="submit"] {
+  margin: 1em 0;
+  padding: 0.6em;
+}
+
+/* registration styles */
+.registration {
+  width: 20em;
+}
+
+body > main > form > p:nth-child(2) > span {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(1) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(2) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(3) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > ul > li:nth-child(4) {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+body > main > form > p:nth-child(6) > span {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+/* landing page styles */
+.hero-container {
+  height: 90vh;
+  width: -webkit-fill-available;
+  background-image: linear-gradient(
+      to right,
+      rgba(29, 141, 87, 0.856),
+      rgba(163, 190, 133, 0.822)
+    ),
+    url("../images/heart.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-title {
+  font-size: 5em;
+  color: white;
+}
+
+.home-btn,
+.home-btn:hover {
+  background-color: white;
+  color: #059951;
+  border: none;
+  padding: 1em 2em;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.home-btn {
+  position: relative;
+  top: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 78, 13, 0.377);
+}
+
+.home-btn:hover {
+  top: 2px;
+  box-shadow: none;
+}
+
+.about-container {
+  background-color: #3bb57a;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3em;
+}
+
+.about-container h2,
+.about-container p {
+  text-align: left;
+  color: white;
+  margin: 0;
+}
+
+.about {
+  justify-content: space-evenly;
+  padding: 2em;
+}
+
+.about-summary {
+  width: 60%;
+}
+
+.stats > .el > p {
+  text-align: center;
+  margin: 0;
+}
+
+.number {
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.showcase-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+  margin: 0 auto;
+  padding: 3em;
+}
+
+.see-all-btn,
+.see-all-btn:hover {
+  background-color: #3bb57a;
+  color: white;
+  margin-bottom: 3em;
+}
+
+#sign-up {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-bottom: 2px solid white;
+  padding: 12px;
+  transition: 300ms ease-in-out;
+}
+
+#sign-up:hover {
+  color: #3bb57a;
+  background-color: white;
+  border-radius: 8px;
+}
+
+/* media queries */
+
+@media screen and (max-width: 1800px) {
+  .details-container {
+    margin: 3em;
+  }
+
+  .details-links {
+    justify-content: center;
+    margin: 2em;
+  }
+
+  .details-container {
+    margin: 0 2em;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .banner {
+    width: 30em;
+    height: 40em;
+    overflow: none;
+  }
+
+  .banner > img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .index-container {
+    margin: 1em;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .card {
+    width: 35em;
+    height: 25em;
+  }
+
+  #card-img {
+    height: 13em;
+  }
+
+  .row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filter, .stats  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .stats {
+    gap: 3em;
+  }
+
+  .about {
+    flex-direction: column-reverse;
+    padding: 2em 0em;
+  }
+
+  .banner {
+    width: 85vw;
+    height: 20em;
+    overflow: none;
+  }
+  
+  .banner > img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .donation-form,
+  .donation-list {
+    width: 40em;
+  }
+
+  .main-info, 
+  .donation-list, 
+  .donation-form, 
+  .details-links {
+    width: 90vw;
+  }
+
+  .navbar {
+    margin: 1em 2em;
+  }
+
+  .nav-links {
+    gap: 1em;
+  }
+
+  .dropdown-content {
+    right: 15px;
+  }
+ 
+  #home-title {
+    font-size: 5em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    width: 90vw;
+    height: 24em;
+  }
+
+  #card-img {
+    height: 8em;
+  }
+
+  .summary {
+    font-size: 13px;
+  }
+
+  #card-title {
+    font-size: 1.7em;
+    font-weight: 600;
+  }
+
+  #sign-up, p {
+    font-size: 13px;
+  }
+
+  #home-title {
+    font-size: 3em;
+  }
+
+  .showcase-container {
+    gap: 2em;
+    padding: 1em;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+
+  a, #select-photo, 
+  #submit-photo {
+    font-size: 11px;
+  }
+
+  .details-links {
+    gap: 10px;
+  }
+
+  .details-links > form {
+    width: 100px;
+  }
+
+  .create-form > form {
+    width: 90vw;
+  }
+
+  .dropdown .dropbtn, .navbar a {
+    font-size: 14px;
+  }
+
+  .filter {
+    justify-content: center;
+    gap: 1.5em;
+  }
+
+}
