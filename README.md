@@ -1,6 +1,8 @@
 # GitFunded
 
-<b>Live Preview: <a target="_blank" href="https://gitfunded.herokuapp.com/">https://gitfunded.herokuapp.com/</a></b>
+### <b>View it here: <a target="_blank" href="https://gitfunded.up.railway.app">gitfunded.up.railway.app</a></b>
+
+<i>Please allow the server a moment to spin up.</i>
 
 Discover and support charitable causes with GitFunded.<br>
 Create, customize, and manage your campaigns.<br>
