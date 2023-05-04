@@ -2,7 +2,7 @@
   <img align ="center" src="https://user-images.githubusercontent.com/115611931/236350094-f5add435-4d0b-4e7e-bb45-fe4c53ae7e3f.png" width="900px">
 </div>
 
-# GitFunded
+# GitFunded 💚
 GitFunded is a full-stack crowdfunding platform built with Python and Django, in which users can create, manage, and "donate" to fundraising campaigns.
 
 <b>View it here: <a target="_blank" href="https://gitfunded.up.railway.app">gitfunded.up.railway.app</a></b>
@@ -17,7 +17,7 @@ GitFunded is a full-stack crowdfunding platform built with Python and Django, in
 
 3. Create a campaign by navigating to `Campaigns > Create a Campaign`.
 
-4. To view a full list of your active campaigns navigate to `Campaigns > Your Campaigns`.
+4. To view a full list of your active campaigns, navigate to `Campaigns > Your Campaigns`.
 
 5. To edit, delete, or upload a photo for your campaign, navigate to the campaign details page.
 
