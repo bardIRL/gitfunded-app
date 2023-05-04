@@ -12,10 +12,15 @@ GitFunded is a full-stack crowdfunding platform built with Python and Django, in
 
 ## Get Started
 1. Feel free to browse the campaigns as a guest user.
+
 2. If you would like to create a campaign or make donations, log in as an existing user or create a new account.
+
 3. Create a campaign by navigating to `Campaigns > Create a Campaign`.
+
 4. To view a full list of your active campaigns navigate to `Campaigns > Your Campaigns`.
+
 5. To edit, delete, or upload a photo for your campaign, navigate to the campaign details page.
+
 6. Want to support? Users can navigate to the detail page for the campaign, and make donations using the donation form.
 
 ## Technologies Used
