@@ -1,1 +1,1 @@
-web: gunicorn gitfunded.wsgi
+web: gunicorn gitfunded.wsgi --log-file -
