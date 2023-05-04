@@ -1,12 +1,13 @@
+<div align="center">
+  <img align ="center" src="https://user-images.githubusercontent.com/115611931/236350094-f5add435-4d0b-4e7e-bb45-fe4c53ae7e3f.png" width="900px">
+</div>
+
 # GitFunded
 GitFunded is a full-stack crowdfunding platform built with Python and Django, in which users can create, manage, and "donate" to fundraising campaigns.
 
 <b>View it here: <a target="_blank" href="https://gitfunded.up.railway.app">gitfunded.up.railway.app</a></b>
 
 <i>Please allow the server a moment to spin up.</i>
-
-
-  <img align ="right" src="https://user-images.githubusercontent.com/115611931/236347539-7ae52135-34c6-48e1-aa9b-727c39d36ff4.png" width="400px">
 
 
 ## Get Started
