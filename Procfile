@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath app gitfunded.wsgi
+web: gunicorn gitfunded.wsgi
